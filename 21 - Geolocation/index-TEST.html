@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width">
+  <style>
+    html {
+      font-size: 100px;
+    }
+    #map {
+      height: 400px;
+      width: 70%;
+      margin-bottom: 3em;
+     }
+    body {
+      font-family: sans-serif;
+      min-height:100vh;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+      background-color:#282828;
+      background-size:16px 16px;
+      background-position: fixed;
+    }
+
+    .arrow {
+      width:250px;
+      overflow: hidden;
+      transition: all 0.2s;
+      transform:rotate(0deg);
+      display: inline-block;
+    }
+
+    h1 {
+      color:white;
+      font-weight: 100;
+      font-size: 60px;
+      display:flex;
+      align-items: center;
+    }
+
+    .units {
+      font-size: 15px;
+    }
+    /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+const arrow = document.querySelector('.arrow');
+const speed = document.querySelector('.speed');
+
+var currentLat = 0;
+var currentLong = 0;
+
+var locationObj = {};
+navigator.geolocation.getCurrentPosition((data) => {
+  initMap(data.coords.latitude, data.coords.longitude);
+});
+
+function initMap(cLat,cLng) {
+  var currentLocation = {lat: cLat, lng: cLng};
+  var map = new google.maps.Map(document.querySelector('#map'), {
+    zoom: 18,
+    center: currentLocation
+  });
+  var marker = new google.maps.Marker({
+    position: currentLocation,
+    map: map
+  });
+}
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPdo7fXCfDRkARUT1mWqJSwfBlWjai81s">
+  </script>
+</body>
+</html>
