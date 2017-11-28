@@ -76,3 +76,31 @@
       outline:0;
       border:1px solid rgba(0,0,0,0.1);
     }
+
+    .button {
+      padding:10px;
+      outline:0;
+      border:1px solid rgba(0,0,0,0.1);
+    }
+
+    .button:hover {
+      background-color: rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+
+    .button--delete {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      border-radius: 3px;
+    }
+
+    .button--delete:hover {
+      background-color: #ac2315;
+      cursor: pointer;
+    }
+
+    .margin-top-10 {
+      margin-top: 10px;
+    }
